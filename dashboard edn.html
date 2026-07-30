@@ -326,7 +326,7 @@
       <h3>À retravailler</h3>
       <div class="row" style="margin-bottom:10px;">
         <label style="font-size:11.5px; color:var(--ink-soft); align-self:center;">Seuil (en dessous de) :</label>
-        <input type="number" id="rework-threshold" value="12" style="max-width:70px;">
+        <input type="number" id="rework-threshold" value="14" style="max-width:70px;">
       </div>
       <div id="rework-list"></div>
     </div>
@@ -655,7 +655,7 @@ let state = {
   itemsDone: {},        // { key: {date} }
   kpi: {},               // { 'YYYY-MM-DD': {qcmTarget, checks}, lastTarget }
   annales: [],           // [{id, annee, epreuve, format, score, date, note}]
-  reworkThreshold: 12
+  reworkThreshold: 14
 };
 
 // Carnet de base (90 fiches importées) : reste statique dans le code, jamais réécrit
@@ -721,7 +721,7 @@ async function loadAll(){
   state.itemsDone = (saved && saved.itemsDone) || {};
   state.kpi = (saved && saved.kpi) || {};
   state.annales = (saved && saved.annales) || [];
-  state.reworkThreshold = (saved && saved.reworkThreshold) || 12;
+  state.reworkThreshold = (saved && saved.reworkThreshold) || 14;
   document.getElementById('rework-threshold').value = state.reworkThreshold;
 
   // migration: anciennes valeurs booléennes -> format {date}
@@ -1413,7 +1413,7 @@ document.getElementById('import-data-input').addEventListener('change', (e)=>{
       state.itemsDone = data.itemsDone || {};
       state.kpi = data.kpi || {};
       state.annales = data.annales || [];
-      state.reworkThreshold = data.reworkThreshold || 12;
+      state.reworkThreshold = data.reworkThreshold || 14;
       localStorage.setItem(STORE_KEY, buildPayload());
       alert('Import réussi — la page va se recharger.');
       location.reload();
