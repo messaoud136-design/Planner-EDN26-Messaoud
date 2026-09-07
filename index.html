@@ -1542,6 +1542,7 @@ function renderFlashcard(){
   const progEl = document.getElementById('flash-progress');
   const cardEl = document.getElementById('flash-card');
   if(!deck.length){ cardEl.innerHTML = '<div class="empty">Carnet vide pour l\'instant.</div>'; progEl.textContent=''; return; }
+  if(!Number.isFinite(state.flashDeck.position)){ state.flashDeck.position = 0; persist(); }
   const idx = state.flashDeck.position;
   const card = deck[idx];
   progEl.textContent = `Carte ${idx+1} / ${deck.length} du tour`;
